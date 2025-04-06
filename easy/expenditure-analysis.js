@@ -14,7 +14,15 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  var list = [];
+
+  const props= transactions.map((obj) => )
+
+  for(var i = 0; i < transactions.length; i++){
+
+  }
+
+  return list;
 }
 
 module.exports = calculateTotalSpentByCategory;

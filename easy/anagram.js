@@ -5,7 +5,7 @@
 */
 
 function isAnagram(str1, str2) {
-  
+
   if(str1.length !== str2.length) return false;
 
   // Brute Force
@@ -27,7 +27,7 @@ function isAnagram(str1, str2) {
     var chartoIntegerMap = new Map();
 
     for(var i = 0; i < str1.length; i++){
-      if(!chartoIntegerMap.get(str1[i].toLowerCase())){
+      if(!chartoIntegerMap.has(str1[i].toLowerCase())){
         chartoIntegerMap.set(str1[i].toLowerCase(), i);
       }
     }

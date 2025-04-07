@@ -15,11 +15,18 @@
 
 function calculateTotalSpentByCategory(transactions) {
   var list = [];
-
-  const props= transactions.map((obj) => )
-
+  var categoryMap = {};
   for(var i = 0; i < transactions.length; i++){
+    const { category, price } = transactions[i];
+    if(categoryMap[category]){
+      categoryMap[category]+=price;
+    }else{
+      categoryMap[category] = price;
+    }
+  }
 
+  for(var cat in categoryMap){
+    list.push({ category : cat, totalSpent : categoryMap[cat]});
   }
 
   return list;

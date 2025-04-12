@@ -10,3 +10,5 @@ class Animal {
 }
 
 
+var obj = new Animal("Deer", 4);
+console.log(obj.describe());

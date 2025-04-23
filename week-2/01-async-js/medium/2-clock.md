@@ -30,7 +30,7 @@ const dateFetcher = () => {
     const currentDate = Date.now()
 
     const hours = currentDate.getHours() + 5;
-    const minutes = currentDate.getMinutes();
+    const minutes = currentDate.getMinutes() + 30;
     const seconds = currentDate.getSeconds();
     const AmPm = hours > 12 ? PM : AM
     console.log(`${hours}:${minutes}:${seconds} AmPm`)

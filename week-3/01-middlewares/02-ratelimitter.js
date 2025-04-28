@@ -16,6 +16,21 @@ setInterval(() => {
     numberOfRequestsForUser = {};
 }, 1000)
 
+app.use("/", async(req, res, next) => {
+  const userId = req.headers["user-id"];
+  if(!userId){
+    return res.status(400).json({ msg : "user_id header is required"});
+  }
+  const noOfreq = numberOfRequestsForUser[userId] || 0;
+  if(noOfreq >= 5){
+    return res.status(404).json({ msg : "Rate limit exceeded"});
+
+  }else{
+    numberOfRequestsForUser[userId] = noOfreq + 1;
+    next()
+  }
+})
+
 app.get('/user', function(req, res) {
   res.status(200).json({ name: 'john' });
 });

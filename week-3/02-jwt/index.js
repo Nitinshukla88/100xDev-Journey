@@ -14,7 +14,13 @@ const jwtPassword = 'secret';
  *                        the password does not meet the length requirement.
  */
 function signJwt(username, password) {
-    // Your code here
+    if(password.length < 6 || username.indexOf("@") == -1 || !username.endsWith(".com")){
+        return null;
+    }
+    const token = jwt.sign({username : username, password : password}, jwtPassword, { expiresIn : 
+        "24h"
+    });
+    return token
 }
 
 /**
@@ -26,7 +32,14 @@ function signJwt(username, password) {
  *                    using the secret key.
  */
 function verifyJwt(token) {
-    // Your code here
+    try{
+        
+    const result = jwt.verify(token, jwtPassword);
+    if(result) return true;
+    }catch(error){
+        return false;
+    }
+    
 }
 
 /**
@@ -38,6 +51,12 @@ function verifyJwt(token) {
  */
 function decodeJwt(token) {
     // Your code here
+    try{
+    const decoded = jwt.decode(token);
+    return decoded ? true : false ;
+    }catch(error){
+        return false;
+    }
 }
 
 
